@@ -17,7 +17,7 @@
         
             $.ajax({
                 type: "GET",
-                url: "verifyed.csv",
+                url: "unverifyed.csv",
                 success: function (data) {
                     $('body').append(arrayToTable(Papa.parse(data).data));
                 }
@@ -25,7 +25,7 @@
         </script>
     </head>
     <body>
-        <h1 style="text-align:center">Statistical Model-Verifyed News</h1>
-        <p> <a href="unverifyed.html">See articles</a>, that require Human Verification!</p>
+        <h1 style="text-align:center">Needs Human Verification</h1>
+        <div id="news"></div>
     </body>
 </html>

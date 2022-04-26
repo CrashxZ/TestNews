@@ -132,8 +132,11 @@ nb.fit(tfidf_data, y)
 
 
 #Verified set
-verifyed_news = open('verifyed.csv',"a", newline='')
+verifyed_news = open('verifyed.csv',"w", newline='')
 writer4 = csv.writer(verifyed_news, delimiter=',')
+#needs human verification
+unverifyed_news = open('unverifyed.csv',"a", newline='')
+writer5 = csv.writer(unverifyed_news, delimiter=',')
 
 # print(test_data)
 verified_set = nb.predict(test_data)
@@ -141,5 +144,7 @@ print(verified_set)
 for i in range(test_data.shape[0]):
     if verified_set[i] == 1:
         writer4.writerow(dataset3.iloc[i])
+    else:
+        writer5.writerow(dataset3.iloc[i])
 
 
