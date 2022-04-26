@@ -10,6 +10,7 @@
                     $(rowData).each(function (j, cellData) {
                         row.append($('<p>'+cellData+'</p>'));
                     });
+                    row.append('<hr>')
                     feed.append(row);
                 });
                 return feed;
