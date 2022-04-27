@@ -15,6 +15,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 from sklearn.naive_bayes import MultinomialNB
+from sklearn.ensemble import RandomForestClassifier
 
 import string
 from tqdm import tqdm
@@ -107,7 +108,8 @@ tfidf_data = vectorizer.fit_transform(working_data).toarray()
 features = vectorizer.get_feature_names_out()
 tfidf_data = pd.DataFrame(tfidf_data, columns=features)
 
-nb = MultinomialNB()
+#nb = MultinomialNB()
+nb = RandomForestClassifier(max_depth=2, random_state=0)
 
 
 def train_and_evaluate(x, y):
@@ -121,17 +123,17 @@ def train_and_evaluate(x, y):
     print(classification_report(ytest, ypred_ts))
 
 
-#train_and_evaluate(bow_data, y)
+# train_and_evaluate(bow_data, y)
 
 
-#train_and_evaluate(tfidf_data, y)
+# train_and_evaluate(tfidf_data, y)
 
 nb.fit(tfidf_data, y)
 
 
 
 
-#Verified set
+# Verified set
 verifyed_news = open('verifyed.csv',"w", newline='')
 writer4 = csv.writer(verifyed_news, delimiter=',')
 #needs human verification
